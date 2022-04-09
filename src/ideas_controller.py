@@ -28,6 +28,7 @@ def get_by_id(id):
 def get_ideas():
     try:
         db = get_db()
+        db.row_factory = dict_factory
         cursor = db.cursor()
         query = "SELECT * FROM ideas"
         cursor.execute(query)
@@ -57,3 +58,9 @@ def delete_idea(id):
     except Exception as er:
         print('Delete Idea error: '+ er)
     return True
+
+def dict_factory(cursor, row):
+    d = {}
+    for idx, col in enumerate(cursor.description):
+        d[col[0]] = row[idx]
+    return d
