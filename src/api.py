@@ -22,22 +22,26 @@ def get_ideas():
         print(er)
 
 @app.route("/idea", methods=["POST"])
-def insert_idea():
-    try:
+def insert_idea(): 
+    try:   
+        print('POST ideas')
+        print(request) 
         idea_details = request.get_json()
-        print(idea_details)
+        # {'FullText': ' ', 'maturityLevel': '1', 'tags': None, 'value': 'Dance time'}
         value = idea_details["value"]
         maturityLevel = idea_details["maturityLevel"]
         FullText = idea_details["FullText"]
         result = ideas_controller.insert_idea(value, maturityLevel, FullText)
         return jsonify(result)
     except Exception as er:
+        print('POST exception: ')
         print(er)
 
 @app.route("/idea", methods=["PUT"])
 def update_idea():
     try:
         idea_details = request.get_json()
+        print('PUT ideas')
         print(idea_details)
         ideaId = idea_details["id"]
         value = idea_details["value"]

@@ -15,10 +15,10 @@ def create_tables():
         tables = [
         """CREATE TABLE IF NOT EXISTS ideas(
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    value TEXT NOT NULL,
+                    value TEXT ,
                     maturityLevel TEXT NOT NULL,
                     tags TEXT,
-                    FullText TEXT NOT NULL
+                    FullText TEXT 
                 )
             """
         ]
